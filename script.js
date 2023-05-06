@@ -1,20 +1,20 @@
 const questions = [
 	{
-		question: "What is the most important piece of equipment for preventing head injuries in football?",
+		question: "Which nutrient is important for repairing and building muscle tissue after exercise?",
 		answers: [
-			{ text: "Mouthguard", correct: false},
-			{ text: "Cleats", correct: false},
-			{ text: "Helmet", correct: true},
-			{ text: "Shoulder pads", correct: false},
+			{ text: "Fat", correct: false},
+			{ text: "Carbohydrates", correct: false},
+			{ text: "Protein", correct: true},
+			{ text: "Sodium", correct: false},
 		]
 	},
 	{
-		question: "Which of the following is not a good way to prevent injuries in basketball?",
+		question: "Which nutrient is important for providing long-lasting energy during a workout or competition?",
 		answers: [
-			{ text: "Playing with worn-out shoes", correct: true},
-			{ text: "Stretching before playing", correct: false},
-			{ text: "Using proper technique", correct: false},
-			{ text: "Wearing ankle support", correct: false},
+			{ text: "Carbohydrates", correct: true},
+			{ text: "Protein", correct: false},
+			{ text: "Fat", correct: false},
+			{ text: "Vitamin C", correct: false},
 		]
 	},
 	{
@@ -45,21 +45,21 @@ const questions = [
 		]
 	},
 	{
-		question: "Which of the following is the best way to prevent sports injuries",
+		question: "What is the best pre-workout snack?",
 		answers: [
-			{ text: "Drinking energy drinks", correct: false},
-			{ text: "wearing lucky socks", correct: false},
-			{ text: "Proper warm-up and stretching", correct: true},
-			{ text: "ignoring pain", correct: false},
+			{ text: "A candy bar", correct: false},
+			{ text: "A bag of chips", correct: false},
+			{ text: "A banana", correct: true},
+			{ text: "A slice of pizza", correct: false},
 		]
 	},
 	{
-		question: "What is a common injury that can result from not wearing proper footwear?",
+		question: "Which of the following is NOT a benefit of exercise on mental health?",
 		answers: [
-			{ text: "muscle cramp", correct: false},
-			{ text: "broken finger", correct: false},
-			{ text: "Head injury", correct: false},
-			{ text: "Ankle sprain", correct: true},
+			{ text: "Reduced anxiety and depression", correct: false},
+			{ text: "Improved self-esteem", correct: false},
+			{ text: "Enhanced cognitive function", correct: false},
+			{ text: "Increased stress levels", correct: true},
 		]
 	},
 	{
@@ -89,6 +89,42 @@ const questions = [
 			{ text: "feeling tired", correct: false},
 		]
 	},
+	{
+		question: "What is an important factor to consider when choosing the right sports equipment?",
+		answers: [
+			{ text: "The color of the equipment", correct: false},
+			{ text: "the brand name", correct: false},
+			{ text: "the price of the equipment", correct: false},
+			{ text: "Proper fit and safety features", correct: true},
+		]
+	},
+	{
+		question: "What is an important step to take when returning to sports after an injury?",
+		answers: [
+			{ text: "Immediately resuming previous activity levels", correct: false},
+			{ text: "Gradually increasing intensity and frequency of exercise", correct: true},
+			{ text: "avoiding exercise altogether", correct: false},
+			{ text: "not seeking medical attention", correct: false},
+		]
+	},
+	{
+		question: "Which of the following is an important step to take to prevent sports injuries caused by weather conditions?",
+		answers: [
+			{ text: "wearing clothing that is uncomfortable or ill-fitting", correct: false},
+			{ text: "pushing through extreme weather conditions", correct: false},
+			{ text: "Dressing appropriately for the weather and avoiding exercise during extreme weather conditions", correct: true},
+			{ text: "Ignoring weather conditions", correct: false},
+		]
+	},
+	{
+		question: "What is an important factor to consider when mentally preparing for a sports competition?",
+		answers: [
+			{ text: "Visualizing success and maintaining a positive mindset", correct: true},
+			{ text: "Focusing on potential failure", correct: false},
+			{ text: "being overly critical of yourself", correct: false},
+			{ text: "letting distractions consume your thoughts.", correct: false},
+		]
+	}
 ];
 
 const questionElement = document.getElementById("question");
@@ -110,9 +146,10 @@ function showQuestion(){
 	resetState();
 	let currentQuestion = questions[currentQuestionIndex];
 	let questionNo = currentQuestionIndex + 1;
-	questionElement.innerHTML = questionNo + ". " + currentQuestion.
-	question;
-	
+	questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+	currentQuestion.answers.sort(() => Math.random() - 0.5);
+
 	currentQuestion.answers.forEach(answer => {
 		const button = document.createElement("button");
 		button.innerHTML = answer.text;
@@ -156,7 +193,15 @@ function selectAnswer(e){
 
 function showScore(){
 	resetState();
-	questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+	if (score == 14){
+		questionElement.innerHTML = `Perfect! You got ${score} out of ${questions.length}!`;
+	}
+	else if (score >= 7 && score < 14){
+		questionElement.innerHTML = `Good Job! You got ${score} out of ${questions.length}!`;
+	}
+	else if (score >= 0 && score < 7){
+		questionElement.innerHTML = `Better luck next time! You got ${score} out of ${questions.length}!`;
+	}
 	nextButton.innerHTML = "Play Again";
 	nextButton.style.display = "block";
 }

@@ -72,6 +72,7 @@ body{
 	border-radius: 7px;
 	cursor: pointer;
 	display: none;
+	font-size: 15px;
 }
 
 .correct{
