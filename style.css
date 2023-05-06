@@ -81,3 +81,35 @@ body{
 .incorrect{
 	background: #ff9393;
 }
+
+/* Media Queries For Phones */
+
+@media screen and (max-width: 480px) {
+	.app{
+		margin: 50px auto 0;
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	.app h1{
+		font-size: 25px;
+		padding-bottom: 20px;
+	}
+
+	.quiz h2{
+		font-size: 18px;
+	}
+
+	.btn{
+		font-size: 13px;
+		padding: 8px;
+		margin: 8px 0;
+	}
+
+	#next-btn{
+		width: 120px;
+		padding: 8px;
+		margin: 10px auto 0;
+		font-size: 13px;
+	}
+}
