@@ -1,3 +1,5 @@
+location.href="https://h4mquizgame.rtnztech.com"
+
 const questions = [
 	{
 		question: "Which nutrient is important for repairing and building muscle tissue after exercise?",
